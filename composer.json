@@ -1,0 +1,19 @@
+{
+    "name": "lamelle/framework",
+    "description": "provides helpers for controllers and services",
+    "type": "component, lib",
+    "version": "2.1-dev",
+    "require": {
+        "php": ">=5.4
+    },
+    "authors": [
+        {
+            "name": "Evgeniy Kuzmin",
+            "email": "jekccs@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "LaMelle\\Framework": "" }
+    },
+    "target-dir": "LaMelle/Framework"
+}
