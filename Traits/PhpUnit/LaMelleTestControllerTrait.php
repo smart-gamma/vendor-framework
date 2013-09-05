@@ -3,36 +3,17 @@
 namespace LaMelle\Framework\Traits\PhpUnit;
 
 /**
- * Initialize app test global variables for unit tests
+ * Initialize app test global variables for controller unit tests
  *
  * @author Evgen Kuzmin <jekccs@gmail.com>
  */
-trait LaMelleTestAplicationTrait
+trait LaMelleTestControllerTrait
 {
-  /**
-   * Selector to use real twig or mock engine
-   *
-   * @var bool
-   */ 
-  private $isTwigEmulation = true; 
-
-  /**
-   * Global variable to selected product at products menu
-   *
-   * @var string
-   */   
-  private $_window = 'fotorollo';
-  
-  /**
-   * Global variable to selected category at categories menu
-   *
-   * @var string
-   */ 
-  private $_categorySlug = 'sun';
+  use LaMelleTestServiceTrait;  
   
   /*
    * Prepare request context for uri params KernelRequestListener storage from cookie emulation in real app
-   * @param: bool $isTwigEmulation - what we use in test - real twig or mock
+   * @param bool $isMockEmulation - what we use in test - real twig or mock
    */   
   private function buildRequestContext()
   {      
@@ -44,7 +25,7 @@ trait LaMelleTestAplicationTrait
     $router->setContext($context);
     
     //twig global vars emulation
-     if(!$this->isTwigEmulation)
+     if(!$this->isMockEmulation)
      {
         $this->twig->addGlobal('_category', $this->_categorySlug);
         $this->twig->addGlobal('_window', $this->_window);
@@ -58,7 +39,7 @@ trait LaMelleTestAplicationTrait
   
   /*
    * Set of phpunit asserts to test controller action responce ok
-   * @param: \Symfony\Component\HttpFoundation\Response $result - controller action answer
+   * @param \Symfony\Component\HttpFoundation\Response $result - controller action answer
    */ 
   private function assertActionResponded($result)
   {
