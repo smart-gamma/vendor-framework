@@ -10,14 +10,6 @@ namespace LaMelle\Framework\Traits\PhpUnit;
 trait LaMelleTestServiceTrait
 {
   /**
-   * Selector to use real twig and inhouse classes or mock them
-   * External api services like Paypal/Fotolia etc are mockering any case
-   *  
-   * @var bool
-   */ 
-  private $isMockEmulation = true; 
-
-  /**
    * Global variable to selected product at products menu
    *
    * @var string

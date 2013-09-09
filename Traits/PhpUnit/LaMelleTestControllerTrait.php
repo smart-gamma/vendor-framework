@@ -36,15 +36,4 @@ trait LaMelleTestControllerTrait
         $this->twig->addGlobal('footer_montage', array());    
      }
   }
-  
-  /*
-   * Set of phpunit asserts to test controller action responce ok
-   * @param \Symfony\Component\HttpFoundation\Response $result - controller action answer
-   */ 
-  private function assertActionResponded($result)
-  {
-    $this->assertInstanceOf('\Symfony\Component\HttpFoundation\Response', $result);
-    $this->assertEquals(200,$result->getStatusCode());
-    $this->assertNotNull($result->getContent());
-  }
 }
