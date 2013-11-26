@@ -2,6 +2,9 @@
 
 namespace LaMelle\Framework\Traits\PhpUnit;
 
+use LaMelle\PanthermediaBundle\Entity\Image;
+use LaMelle\PanthermediaBundle\Entity\SourceFile;
+
 /**
  * Initialize app test global variables for controller unit tests
  *
@@ -20,7 +23,7 @@ trait LaMelleTestControllerTrait
     //Uri emulation  
     $router = $this->container->get('router');
     $context = $router->getContext();
-	$context->setParameter('_window', $this->_window);
+    $context->setParameter('_window', $this->_window);
     $context->setParameter('_category', $this->_categorySlug);
     $router->setContext($context);
     
@@ -35,5 +38,13 @@ trait LaMelleTestControllerTrait
         $this->twig->addGlobal('_windowinfo', array('name'=>'dummy product','infoUrl'=> 'dummyUrl'));
         $this->twig->addGlobal('footer_montage', array());    
      }
+     
+     // Configure Panthermedia Image service instead of EventListener
+     Image::setImagePrice($this->container->getParameter('lamelle.panthermedia.config.price'));
+     Image::setRawFiles($this->container->getParameter('lamelle.panthermedia.config.raw_files'));
+     Image::setWebFiles($this->container->getParameter('lamelle.panthermedia.config.web_files'));
+     Image::setWebPath($this->container->getParameter('lamelle.panthermedia.config.web_path'));
+     SourceFile::setWebPath($this->container->getParameter('lamelle.panthermedia.config.web_path'));
+     SourceFile::setWebFiles($this->container->getParameter('lamelle.panthermedia.config.web_files'));
   }
 }
