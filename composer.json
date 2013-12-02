@@ -2,7 +2,7 @@
     "name": "lamelle/framework",
     "description": "provides helpers for controllers and services",
     "type": "component, lib",
-    "version": "2.1-dev",
+    "version": "dev-master",
     "require": {
         "php": ">=5.4"
     },
@@ -13,7 +13,7 @@
         }
     ],
     "autoload": {
-        "psr-0": { "LaMelle\\Framework": "" }
+        "psr-0": { "Gamma\\Framework": "" }
     },
-    "target-dir": "LaMelle/Framework"
+    "target-dir": "Gamma/Framework"
 }
