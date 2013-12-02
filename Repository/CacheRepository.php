@@ -1,6 +1,6 @@
 <?php
 
-namespace LaMelle\Framework\Repository;
+namespace Gamma\Framework\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\HttpFoundation\Request;

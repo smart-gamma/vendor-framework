@@ -1,6 +1,6 @@
 <?php
 
-namespace LaMelle\Framework\Traits\DI;
+namespace Gamma\Framework\Traits\DI;
 
 /**
  * Set Templating trait

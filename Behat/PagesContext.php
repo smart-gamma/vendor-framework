@@ -1,6 +1,6 @@
 <?php
 
-namespace LaMelle\Framework\Behat;
+namespace Gamma\Framework\Behat;
 
 use Behat\Behat\Context\Step;
 

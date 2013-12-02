@@ -1,6 +1,6 @@
 <?php
 
-namespace LaMelle\Framework\Traits\PhpUnit;
+namespace Gamma\Framework\Traits\PhpUnit;
 
 use LaMelle\PanthermediaBundle\Entity\Image;
 use LaMelle\PanthermediaBundle\Entity\SourceFile;

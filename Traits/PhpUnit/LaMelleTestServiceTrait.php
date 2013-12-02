@@ -1,6 +1,6 @@
 <?php
 
-namespace LaMelle\Framework\Traits\PhpUnit;
+namespace Gamma\Framework\Traits\PhpUnit;
 
 /**
  * Initialize app test global variables for service unit tests
