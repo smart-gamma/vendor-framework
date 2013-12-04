@@ -14,7 +14,7 @@ trait LaMelleTestControllerTrait
 {
   use LaMelleTestServiceTrait;
 
-  /*
+  /**
    * Prepare request context for uri params KernelRequestListener storage from cookie emulation in real app
    * @param bool $isMockEmulation - what we use in test - real twig or mock
    */

@@ -13,26 +13,26 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CacheRepository extends EntityRepository
 {
-    /*
+    /**
      * Caching duarations
      */
     const CACHE_HOUR    = 3600;
     const CACHE_DAY     = 86400;
     const CACHE_WEEK    = 604800;
 
-    /*
+    /**
      * Cache host to prevent reseller shops mess caching
      * @var string
      */
     private $cacheHost = null;
 
-    /*
+    /**
      * Cache locale to prevent localized mess for multilanguages support
      * @var string
      */
     private $cacheLocale = null;
 
-    /*
+    /**
      * Get path prefix to cache result
      * @param  string $callerName - function name of called method
      * @return string
@@ -42,7 +42,7 @@ class CacheRepository extends EntityRepository
         return $this->cacheHost. '_' .$this->cacheLocale. '_' .$callerName;
     }
 
-    /*
+    /**
      * Init cache params for proper path generation
      */
     public function initCachePath(Request $request)
@@ -51,7 +51,7 @@ class CacheRepository extends EntityRepository
         $this->cacheLocale = $request->getLocale();
     }
 
-    /*
+    /**
      * Builds path to cache for dynamicly queries built with createSearchQuery method
      * @return string
      */
