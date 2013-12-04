@@ -1,7 +1,6 @@
 <?php
 
 namespace Gamma\Framework\Behat;
-use Behat\MinkExtension\Context\MinkContext;
 
 use Behat\Behat\Context\BehatContext;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
@@ -51,5 +50,5 @@ abstract class BaseContext extends BehatContext implements KernelAwareInterface
     {
         return $this->kernel->getContainer()->get($id);
     }
-        
+
 }

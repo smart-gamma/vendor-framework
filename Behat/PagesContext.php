@@ -10,7 +10,7 @@ use Behat\Behat\Context\Step;
  * @authorEvgeniy Kuzmin <jekccs@gmail.com>
  */
 class PagesContext extends BaseContext
-{   
+{
     /**
      * @Then /^I should be on login page$/
      */
