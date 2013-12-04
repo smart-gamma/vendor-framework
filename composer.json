@@ -2,7 +2,7 @@
     "name": "gamma/framework",
     "description": "provides helpers for controllers and services",
     "type": "component, lib",
-    "version": "dev-master",
+    "version": "master",
     "require": {
         "php": ">=5.4"
     },
