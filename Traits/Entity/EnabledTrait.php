@@ -10,7 +10,7 @@ namespace Gamma\Framework\Traits\Entity;
 trait EnabledTrait
 {
     /**
-     * Show gallery in shop
+     * Show item in shop
      *
      * @ORM\Column(type="boolean")
      * @var bool
