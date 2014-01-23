@@ -4,7 +4,9 @@
     "type": "component, lib",
     "version": "master",
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "behat/common-contexts": "*",
+        "kriswallsmith/buzz":    ">=0.5"
     },
     "authors": [
         {
