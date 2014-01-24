@@ -19,9 +19,10 @@ class ApiContext extends WebApiContext
      *
      * @Then /^(?:the )?response should contain part of text$/
      */
-    public function theResponseShouldContainPartOfText(PyStringNode $jsonString)
+    public function theResponseShouldContainPartOfText(PyStringNode $string)
     {
-        $text = json_decode($this->replacePlaceHolder($jsonString->getRaw()), true);
-        assertRegExp('/'.preg_quote($text).'/', $this->getBrowser()->getLastResponse()->getContent());
+        $text = preg_quote($this->replacePlaceHolder($string));
+        $text = str_replace('%__REG_EXP_MATCH_ANY__%', '(.*)', $text);
+        assertRegExp('/'.$text.'/is', $this->getBrowser()->getLastResponse()->getContent());
     } 
 }
