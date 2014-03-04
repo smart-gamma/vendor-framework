@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @author Evgen Kuzmin <jekccs@gmail.com>
  */
-class CacheRepository extends EntityRepository
+abstract class CacheRepository extends EntityRepository
 {
     /**
      * Caching duarations
@@ -39,7 +39,7 @@ class CacheRepository extends EntityRepository
      */
     public function getCachePrefix($callerName)
     {
-        return $this->cacheHost. '_' .$this->cacheLocale. '_' .$callerName;
+        return $this->cacheHost. '_' .$this->cacheLocale. '_' .$callerName . '_';
     }
 
     /**
