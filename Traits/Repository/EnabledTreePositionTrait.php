@@ -15,8 +15,9 @@ trait EnabledTreePositionTrait
      */
     public function findEnabledParents($offset = 0, $max = 30)
     {
-        $query = $this->createQueryBuilder("p")
-            ->andWhere("p.enabled=1")
+        $query = $this->createQueryBuilder('p')
+            ->andWhere('p.enabled=1')
+            ->andWhere('p.parent IS NULL')
             ->setMaxResults($max)
             ->setFirstResult($offset)
             ->orderBy('p.treePosition')
