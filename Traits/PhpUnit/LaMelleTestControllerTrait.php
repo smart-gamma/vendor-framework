@@ -39,11 +39,11 @@ trait LaMelleTestControllerTrait
      }
 
      // Configure Panthermedia Image service instead of EventListener
-     Image::setImagePrice($this->container->getParameter('lamelle.panthermedia.config.price'));
-     Image::setRawFiles($this->container->getParameter('lamelle.panthermedia.config.raw_files'));
-     Image::setWebFiles($this->container->getParameter('lamelle.panthermedia.config.web_files'));
-     Image::setWebPath($this->container->getParameter('lamelle.panthermedia.config.web_path'));
-     SourceFile::setWebPath($this->container->getParameter('lamelle.panthermedia.config.web_path'));
-     SourceFile::setWebFiles($this->container->getParameter('lamelle.panthermedia.config.web_files'));
+     Image::setImagePrice($this->container->getParameter('lamelle.panther.config.price'));
+     Image::setRawFiles($this->container->getParameter('lamelle.panther.config.raw_files'));
+     Image::setWebFiles($this->container->getParameter('lamelle.panther.config.web_files'));
+     Image::setWebPath($this->container->getParameter('lamelle.panther.config.web_path'));
+     SourceFile::setWebPath($this->container->getParameter('lamelle.panther.config.web_path'));
+     SourceFile::setWebFiles($this->container->getParameter('lamelle.panther.config.web_files'));
   }
 }

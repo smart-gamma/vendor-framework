@@ -201,7 +201,7 @@ abstract class BuilderRepository extends CacheRepository
             $query->setMaxResults ($this->limit);
 
         //Debug query
-       // echo "<br>QUERY:".$query->getQuery()->getSql();
+        //echo "<br>QUERY:".$query->getQuery()->getSql();
         return $query;
     }
     
