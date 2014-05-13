@@ -95,7 +95,14 @@ abstract class BuilderRepository extends CacheRepository
      */
     public function addExtraJoins($join)
     {
-        $this->extraJoins[] = $join;
+        $key = $join['as'];
+        if (!array_key_exists($key, $this->extraJoins)) {
+            $this->extraJoins[$key] = $join;
+        } else {
+            if($this->extraJoins[$key] != $join) {
+                throw new Exception('Join key:'.$key.' is already used for join condition:"'.$this->extraJoins[$key].'"');
+            }
+        }      
     }
 
     /**
@@ -104,10 +111,12 @@ abstract class BuilderRepository extends CacheRepository
      */
     public function addExtraWhere($where, $key = null)
     {
-        if ($key) {
+        if ($key === null) {
+            $key = md5($where);
+        } 
+        
+        if (!array_key_exists($key, $this->extraWhere)) {
             $this->extraWhere[$key] = $where;
-        } else {
-            $this->extraWhere[] = $where;
         }
     }
 
