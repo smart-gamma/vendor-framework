@@ -14,7 +14,7 @@ trait LaMelleTestServiceTrait
    *
    * @var string
    */
-  private $_window = 'fotorollo';
+  private $_window = 'bedruckter-stoff';
 
   /**
    * Global variable to selected category at categories menu
