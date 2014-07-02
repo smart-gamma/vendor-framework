@@ -136,18 +136,4 @@ trait TreePositionTrait
 	{
 		return $this->treeRoot;
 	}
-
-	/**
-	 * Parent Identifier
-	 *
-	 * @param int $parent
-	 */
-	public abstract function setParent($parent);
-
-	/**
-	 * Parent Identifier
-	 *
-	 * @return int
-	 */
-	public abstract function getParent();
 }

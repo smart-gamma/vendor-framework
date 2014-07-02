@@ -36,7 +36,11 @@ trait TreePositionTrait
 			{
 				/* @var TreePositionInterface $entity */
 				/* @var TreePositionInterface|int $parent */
-				$parent = $entity->getParent();
+                if(method_exists($entity,'getParent')) {
+                    $parent = $entity->getParent();
+                } else {
+                    $parent = 0;
+                }
 				$parentId = (is_object($parent)) ? $parent->getUniqueId() : (int)$parent;
 				$entity->setTreeLevel(-1);
 
