@@ -16,7 +16,7 @@ trait SetRequestTrait
     protected $request;
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $router
+     * @param \Symfony\Component\HttpFoundation\Request $request
      */
     public function setRequest($request)
     {
