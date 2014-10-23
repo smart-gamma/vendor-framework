@@ -22,4 +22,13 @@ trait SetEntityManagerTrait
     {
         $this->em = $em;
     }
+    
+    /**
+     * Wrapper to legacy setEm
+     * @param \Doctrine\ORM\EntityManager $em
+     */
+    public function setEntityManager($em)
+    {
+        $this->setEm($em);
+    }    
 }
