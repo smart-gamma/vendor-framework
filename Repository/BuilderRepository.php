@@ -194,16 +194,17 @@ abstract class BuilderRepository extends CacheRepository
 
         //order
         if(is_array($this->order)) {
-           $query->orderBy($this->order[0], $this->orderDirection);
+           $query->orderBy($this->order[0], $this->getFieldOrderDirection($this->orderDirection, 0));
            
            $order = $this->order;
            unset($order[0]);
+           $i = 1;
            
            foreach($order as $extra) {
-              $query->addOrderBy($extra, $this->orderDirection); 
+              $query->addOrderBy($extra, $this->getFieldOrderDirection($this->orderDirection, $i++)); 
            }
         } else {    
-            $query->orderBy($this->order, $this->orderDirection);
+            $query->orderBy($this->order, $this->getFieldOrderDirection($this->orderDirection, 0));
         }    
         
         if(0 < $this->limit)
@@ -212,6 +213,20 @@ abstract class BuilderRepository extends CacheRepository
         //Debug query
         //echo "<br>QUERY:".$query->getQuery()->getSql();
         return $query;
+    }
+    
+    /**
+     * 
+     * @param string|array $orderDirection
+     * @return string
+     */
+    private function getFieldOrderDirection($orderDirection, $elementIndex)
+    {
+        if(is_array($orderDirection)){
+            return $orderDirection[$elementIndex];
+        } else {
+            return $orderDirection;
+        }
     }
     
     /**
