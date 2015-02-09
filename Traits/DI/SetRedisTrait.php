@@ -9,11 +9,6 @@ namespace Gamma\Framework\Traits\DI;
  */
 trait SetRedisTrait
 {
-    /**
-     * @DI\Inject("snc_redis.default")
-     */
-    protected $redis;
-
     public function setRedis($redis)
     {
         $this->redis = $redis;
