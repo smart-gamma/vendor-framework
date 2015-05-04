@@ -40,7 +40,7 @@ class TrackDurationListener
 
     public function onKernelResponse(FilterResponseEvent $event)
     {
-        if (!$event->isMasterRequest()) {
+        if (!$event->isMasterRequest() || !preg_match('/\/api/', $this->uri)) {
             return;
         }
         
