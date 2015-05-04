@@ -1,0 +1,16 @@
+services:
+    gamma.listener.requestresponse.stopwatch:
+        class: Gamma\Framework\Listener\TrackDurationListener
+        arguments: [ @gamma.logger.stopwatch ]
+        tags:
+        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+        - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+      
+    symfony.stopwatch.service:
+        class: Symfony\Component\Stopwatch\Stopwatch
+
+    gamma.logger.stopwatch:
+        class: Gamma\Framework\Service\LoggerStopwatch
+        arguments: [ @symfony.stopwatch.service, @logger, %stopwatch_enable% ]
+        tags:
+            - { name: monolog.logger, channel: api }      
