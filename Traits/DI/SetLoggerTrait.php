@@ -18,7 +18,7 @@ trait SetLoggerTrait
     /**
      * @param \LoggerInterface $logger
      */
-    public function setTwig($logger)
+    public function setLogger($logger)
     {
         $this->logger = $logger;
     }
