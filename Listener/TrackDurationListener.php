@@ -26,12 +26,10 @@ class TrackDurationListener
         
         $request = $event->getRequest();
         $this->uri   = $request->getRequestUri();
-        //echo 'start:'.$this->uri;
         $this->stopwatch->start($this->uri);
-                         
         $this->requestMethod = $request->getMethod();
-
         $receivedRawData = $request->getContent();
+
         if($receivedRawData){
             $parsedData = json_decode($receivedRawData, true);
             $this->requestApiContent = $parsedData;
@@ -52,10 +50,9 @@ class TrackDurationListener
         }
 
         if(preg_match('/\/api/', $this->uri)){
-            $params['response'] = $response->getContent();
+            $params['response'] = json_decode($response->getContent(), true);
         }
 
-        //echo 'stop:'.$this->uri;
         $this->stopwatch->stop($this->uri, $params);
     }
 }
