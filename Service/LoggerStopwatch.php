@@ -73,6 +73,6 @@ class LoggerStopwatch
      */
     private function logEvent(StopwatchEvent $event, $eventName, array $params)
     {
-        $this->logger->debug($eventName . ',                ' . $event->getDuration().'ms', $params);
+        $this->logger->info($eventName . ',                ' . $event->getDuration().'ms', $params);
     }
 }
