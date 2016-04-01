@@ -1,11 +1,18 @@
 services:
-    gamma.listener.requestresponse.stopwatch:
+    gamma.listener.requestresponse.stopwatch.slow:
         class: Gamma\Framework\Listener\TrackDurationListener
-        arguments: [ @gamma.logger.stopwatch, @gamma.logger.stopwatch.slow]
+        arguments: [ @gamma.logger.stopwatch.slow]
         tags:
         - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
         - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
-      
+
+    gamma.listener.requestresponse.stopwatch:
+        class: Gamma\Framework\Listener\TrackDurationListener
+        arguments: [ @gamma.logger.stopwatch]
+        tags:
+        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+        - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+
     symfony.stopwatch.service:
         class: Symfony\Component\Stopwatch\Stopwatch
 

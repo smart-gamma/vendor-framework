@@ -8,15 +8,13 @@ use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 class TrackDurationListener
 {
     protected $stopwatchLogger;
-    protected $stopwatchLoggerSlow;
     private $uri;
     private $requestApiContent;
     private $requestMethod;
 
-    public function __construct($stopwatchLogger, $stopwatchLoggerSlow)
+    public function __construct($stopwatchLogger)
     {
         $this->stopwatchLogger = $stopwatchLogger;
-        $this->stopwatchLoggerSlow = $stopwatchLoggerSlow;
     }
 
     public function onKernelRequest(GetResponseEvent $event)
@@ -33,7 +31,6 @@ class TrackDurationListener
         }
 
         $this->stopwatchLogger->start($this->uri);
-        $this->stopwatchLoggerSlow->start($this->uri);
         $this->requestMethod = $request->getMethod();
         $receivedRawData = $request->getContent();
 
@@ -61,6 +58,5 @@ class TrackDurationListener
         }
 
         $this->stopwatchLogger->stop($this->uri, $params);
-        $this->stopwatchLoggerSlow->stop($this->uri, $params);
     }
 }

@@ -11,6 +11,8 @@ use Symfony\Component\Stopwatch\StopwatchEvent;
 
 class LoggerStopwatch
 {
+    const EVENT_PREFIX = '';
+
     /**
      * @var Stopwatch
      */
@@ -45,7 +47,7 @@ class LoggerStopwatch
      */
     public function start($eventName)
     {
-        return ($this->stopwatchEnabled) ? $this->stopwatch->start($eventName) : false;
+        return ($this->stopwatchEnabled) ? $this->stopwatch->start(static::EVENT_PREFIX.$eventName) : false;
     }
 
     /**
@@ -59,8 +61,8 @@ class LoggerStopwatch
         if (! $this->stopwatchEnabled) {
             return false;
         }
-        $event = $this->stopwatch->stop($eventName);
-        $this->logEvent($event, $eventName, $extraParams);
+        $event = $this->stopwatch->stop(static::EVENT_PREFIX.$eventName);
+        $this->logEvent($event, static::EVENT_PREFIX.$eventName, $extraParams);
         return $event;
     }
 

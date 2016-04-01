@@ -8,10 +8,11 @@ namespace Gamma\Framework\Service;
 use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Stopwatch\Stopwatch;
 use Symfony\Component\Stopwatch\StopwatchEvent;
-use Gamma\Framework\Service\LoggerStopwatch;
 
 class LoggerStopwatchSlow extends LoggerStopwatch
 {
+    const EVENT_PREFIX = 'slow:';
+
     /**
      * @var bool
      */
@@ -26,9 +27,8 @@ class LoggerStopwatchSlow extends LoggerStopwatch
     public function __construct(Stopwatch $stopwatch, LoggerInterface $logger, $stopwatchEnabled = false, $slowTimeLimit)
     {
         $this->slowTimeLimit = $slowTimeLimit;
-        partent::__construct($stopwatch, $logger, $stopwatchEnabled);
+        parent::__construct($stopwatch, $logger, $stopwatchEnabled);
     }
-
 
     /**
      * Save event data to the log
@@ -40,7 +40,7 @@ class LoggerStopwatchSlow extends LoggerStopwatch
     protected function logEvent(StopwatchEvent $event, $eventName, array $params)
     {
         if($event->getDuration() > $this->slowTimeLimit) {
-            $this->logger->info($eventName . ',                ' . $event->getDuration() . 'ms', $params);
+            $this->logger->error($eventName . ',                ' . $event->getDuration() . 'ms', $params);
         }
     }
 }
