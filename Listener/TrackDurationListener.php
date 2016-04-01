@@ -11,9 +11,8 @@ class TrackDurationListener
     private $uri;
     private $requestApiContent;
     private $requestMethod;
-    private $responseApiContent;
 
-    public function __construct($stopwatch) 
+    public function __construct($stopwatch)
     {
         $this->stopwatch = $stopwatch;
     }
@@ -23,9 +22,14 @@ class TrackDurationListener
         if (!$event->isMasterRequest()) {
             return;
         }
-        
+
         $request = $event->getRequest();
         $this->uri   = $request->getRequestUri();
+
+        if (!preg_match('/\/api/', $this->uri)) {
+            return;
+        }
+
         $this->stopwatch->start($this->uri);
         $this->requestMethod = $request->getMethod();
         $receivedRawData = $request->getContent();
@@ -41,10 +45,10 @@ class TrackDurationListener
         if (!$event->isMasterRequest() || !preg_match('/\/api/', $this->uri)) {
             return;
         }
-        
+
         $params = array('method' => $this->requestMethod);
         $response  = $event->getResponse();
-        
+
         if($this->requestApiContent){
             $params['request'] = $this->requestApiContent;
         }
