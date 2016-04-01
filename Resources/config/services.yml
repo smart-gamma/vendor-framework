@@ -1,7 +1,7 @@
 services:
     gamma.listener.requestresponse.stopwatch:
         class: Gamma\Framework\Listener\TrackDurationListener
-        arguments: [ @gamma.logger.stopwatch ]
+        arguments: [ @gamma.logger.stopwatch, @gamma.logger.stopwatch.slow]
         tags:
         - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
         - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
@@ -13,4 +13,10 @@ services:
         class: Gamma\Framework\Service\LoggerStopwatch
         arguments: [ @symfony.stopwatch.service, @logger, %stopwatch_enable% ]
         tags:
-            - { name: monolog.logger, channel: api }      
+            - { name: monolog.logger, channel: api }
+
+    gamma.logger.stopwatch.slow:
+        class: Gamma\Framework\Service\LoggerStopwatchSlow
+        arguments: [ @symfony.stopwatch.service, @logger, %stopwatch_enable%,  %stopwatch_slow_time_limit%]
+        tags:
+            - { name: monolog.logger, channel: api_slow }

@@ -14,17 +14,17 @@ class LoggerStopwatch
     /**
      * @var Stopwatch
      */
-    private $stopwatch;
+    protected $stopwatch;
 
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    protected $logger;
 
     /**
      * @var bool
      */
-    private $stopwatchEnabled;
+    protected $stopwatchEnabled;
 
     /**
      * @param Stopwatch $stopwatch
@@ -71,7 +71,7 @@ class LoggerStopwatch
      * @param string $eventName
      * @param array $params
      */
-    private function logEvent(StopwatchEvent $event, $eventName, array $params)
+    protected function logEvent(StopwatchEvent $event, $eventName, array $params)
     {
         $this->logger->info($eventName . ',                ' . $event->getDuration().'ms', $params);
     }
