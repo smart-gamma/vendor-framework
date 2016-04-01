@@ -14,7 +14,7 @@ trait SlugTrait
      *
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
-     * @var string
+     * @var                       string
      */
     private $slug;
 

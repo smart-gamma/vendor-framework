@@ -11,7 +11,7 @@ trait EnabledSlugTrait
 {
     /**
      * Find enabled item by slug
-     * @param  string     $slug
+     * @param  string $slug
      * @return mixed|null
      */
     public function findBySlug($slug)

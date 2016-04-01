@@ -9,18 +9,18 @@ namespace Gamma\Framework\Traits\PhpUnit;
  */
 trait LaMelleTestServiceTrait
 {
-  /**
+    /**
    * Global variable to selected product at products menu
    *
    * @var string
    */
-  private $_window = 'bedruckter-stoff';
+    private $_window = 'bedruckter-stoff';
 
-  /**
+    /**
    * Global variable to selected category at categories menu
    *
    * @var string
    */
-  private $_categorySlug = 'sun';
+    private $_categorySlug = 'sun';
 
 }

@@ -17,10 +17,10 @@ class LoggerStopwatchSlow extends LoggerStopwatch
     private $slowTimeLimit;
 
     /**
-     * @param Stopwatch $stopwatch
+     * @param Stopwatch       $stopwatch
      * @param LoggerInterface $logger
-     * @param bool $stopwatchEnabled
-     * @param int $slowTimeLimit
+     * @param bool            $stopwatchEnabled
+     * @param int             $slowTimeLimit
      */
     public function __construct(Stopwatch $stopwatch, LoggerInterface $logger, $stopwatchEnabled = false, $slowTimeLimit)
     {
@@ -33,8 +33,8 @@ class LoggerStopwatchSlow extends LoggerStopwatch
      * Save event data to the log
      *
      * @param StopwatchEvent $event
-     * @param string $eventName
-     * @param array $params
+     * @param string         $eventName
+     * @param array          $params
      */
     protected function logEvent(StopwatchEvent $event, $eventName, array $params)
     {

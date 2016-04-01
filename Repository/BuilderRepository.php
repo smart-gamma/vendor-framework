@@ -68,8 +68,9 @@ abstract class BuilderRepository extends CacheRepository
 
     public function setLimit($limit)
     {
-        if (!is_int($limit) || $limit <= 0)
-            throw new Exception(sprintf("Parameter \$limit must be positive integer"));
+        if (!is_int($limit) || $limit <= 0) {
+            throw new Exception(sprintf("Parameter \$limit must be positive integer")); 
+        }
         
         $this->limit = $limit;
     }
@@ -106,7 +107,7 @@ abstract class BuilderRepository extends CacheRepository
     }
 
     /**
-     * @param array $where
+     * @param array   $where
      * @param astring $key
      */
     public function addExtraWhere($where, $key = null)
@@ -164,7 +165,7 @@ abstract class BuilderRepository extends CacheRepository
     /**
      * Create pagination query constructor for search conditions
      *
-     * @param string $alias table alias 
+     * @param  string $alias table alias 
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function createSearchQuery($alias = 'p')
@@ -173,42 +174,48 @@ abstract class BuilderRepository extends CacheRepository
         $query = $this->createQueryBuilder($alias);
 
         // joins
-        foreach ($this->extraJoins as $join)
-            $query->$join['type']($join['field'], $join['as']);
+        foreach ($this->extraJoins as $join) {
+            $query->$join['type']($join['field'], $join['as']); 
+        }
 
         // default where
-        if ($this->defaultWhere)
-            $query->where($this->defaultWhere);
+        if ($this->defaultWhere) {
+            $query->where($this->defaultWhere); 
+        }
 
         // extra where
-        foreach ($this->extraWhere as $where)
-            $query->andWhere($where);
+        foreach ($this->extraWhere as $where) {
+            $query->andWhere($where); 
+        }
 
         // extra or wheres
-        foreach ($this->extraOrWhere as $where)
-            $query->orWhere($where);
+        foreach ($this->extraOrWhere as $where) {
+            $query->orWhere($where); 
+        }
 
         //extra parameters
-        foreach ($this->extraParameters as $parameter)
-            $query->setParameter($parameter[0], $parameter[1]);
+        foreach ($this->extraParameters as $parameter) {
+            $query->setParameter($parameter[0], $parameter[1]); 
+        }
 
         //order
         if(is_array($this->order)) {
-           $query->orderBy($this->order[0], $this->getFieldOrderDirection($this->orderDirection, 0));
+            $query->orderBy($this->order[0], $this->getFieldOrderDirection($this->orderDirection, 0));
            
-           $order = $this->order;
-           unset($order[0]);
-           $i = 1;
+            $order = $this->order;
+            unset($order[0]);
+            $i = 1;
            
-           foreach($order as $extra) {
-              $query->addOrderBy($extra, $this->getFieldOrderDirection($this->orderDirection, $i++)); 
-           }
+            foreach($order as $extra) {
+                $query->addOrderBy($extra, $this->getFieldOrderDirection($this->orderDirection, $i++)); 
+            }
         } else {    
             $query->orderBy($this->order, $this->getFieldOrderDirection($this->orderDirection, 0));
         }    
         
-        if(0 < $this->limit)
-            $query->setMaxResults ($this->limit);
+        if(0 < $this->limit) {
+            $query->setMaxResults($this->limit); 
+        }
 
         //Debug query
         //echo "<br>QUERY:".$query->getQuery()->getSql();
@@ -222,7 +229,7 @@ abstract class BuilderRepository extends CacheRepository
      */
     private function getFieldOrderDirection($orderDirection, $elementIndex)
     {
-        if(is_array($orderDirection)){
+        if(is_array($orderDirection)) {
             return $orderDirection[$elementIndex];
         } else {
             return $orderDirection;

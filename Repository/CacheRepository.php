@@ -64,12 +64,14 @@ abstract class CacheRepository extends EntityRepository
             $extraWhere = implode("_", $this->extraWhere);
 
             foreach ($this->extraParameters as $parameter) {
-                if(is_object($parameter[1]))
-                    $replacement = $parameter[1]->getId();
+                if(is_object($parameter[1])) {
+                    $replacement = $parameter[1]->getId(); 
+                }
                 elseif (is_array($parameter[1])) {
                     $replacement = implode('_', $parameter[1]);
-                } else
-                    $replacement = $parameter[1];
+                } else {
+                    $replacement = $parameter[1]; 
+                }
 
                 $extraWhere = str_replace(":".$parameter[0], $replacement, $extraWhere);
             }

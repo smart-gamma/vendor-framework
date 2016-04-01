@@ -27,9 +27,9 @@ class LoggerStopwatch
     protected $stopwatchEnabled;
 
     /**
-     * @param Stopwatch $stopwatch
+     * @param Stopwatch       $stopwatch
      * @param LoggerInterface $logger
-     * @param bool $stopwatchEnabled
+     * @param bool            $stopwatchEnabled
      */
     public function __construct(Stopwatch $stopwatch, LoggerInterface $logger, $stopwatchEnabled = false) 
     {
@@ -51,7 +51,7 @@ class LoggerStopwatch
     /**
      * @see Stopwatch::stop
      * @param string $eventName
-     * @param array $extraParams
+     * @param array  $extraParams
      * @return false|StopwatchEvent
      */
     public function stop($eventName, array $extraParams = array())
@@ -68,8 +68,8 @@ class LoggerStopwatch
      * Save event data to the log
      *
      * @param StopwatchEvent $event
-     * @param string $eventName
-     * @param array $params
+     * @param string         $eventName
+     * @param array          $params
      */
     protected function logEvent(StopwatchEvent $event, $eventName, array $params)
     {

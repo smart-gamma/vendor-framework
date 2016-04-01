@@ -27,7 +27,7 @@ trait EnabledCommonTrait
 
     /**
      * Returns the number of enabled items
-     * @param  int   $limit
+     * @param  int $limit
      * @return mixed
      */
     public function getLast($limit = 5)

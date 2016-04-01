@@ -13,7 +13,7 @@ trait EnabledTrait
      * Show item in shop
      *
      * @ORM\Column(type="boolean")
-     * @var bool
+     * @var                        bool
      */
     private $enabled = true;
     

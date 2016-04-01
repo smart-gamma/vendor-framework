@@ -37,7 +37,7 @@ class TrackDurationListener
         $this->requestMethod = $request->getMethod();
         $receivedRawData = $request->getContent();
 
-        if($receivedRawData){
+        if($receivedRawData) {
             $parsedData = json_decode($receivedRawData, true);
             $this->requestApiContent = $parsedData;
         }
@@ -52,11 +52,11 @@ class TrackDurationListener
         $params = array('method' => $this->requestMethod);
         $response  = $event->getResponse();
 
-        if($this->requestApiContent){
+        if($this->requestApiContent) {
             $params['request'] = $this->requestApiContent;
         }
 
-        if(preg_match('/\/api/', $this->uri)){
+        if(preg_match('/\/api/', $this->uri)) {
             $params['response'] = json_decode($response->getContent(), true);
         }
 

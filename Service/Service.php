@@ -25,8 +25,8 @@ abstract class Service extends ContainerAware
     /**
      * Gets a service.
      *
-     * @param string $id                The service identifier
-     * @param int    $invalidBehavior   The behavior when the service does not exist
+     * @param string $id              The service identifier
+     * @param int    $invalidBehavior The behavior when the service does not exist
      *
      * @throws \InvalidArgumentException if the service is not defined
      *
@@ -40,9 +40,9 @@ abstract class Service extends ContainerAware
     /**
      * Search a record and return them
      *
-     * @param int|string $id            ID of the entity
-     * @param string     $name          The entity manager name (null for the default one)
-     * @param string     $repository    Repository
+     * @param int|string $id         ID of the entity
+     * @param string     $name       The entity manager name (null for the default one)
+     * @param string     $repository Repository
      *
      * @return mixed
      */
@@ -54,8 +54,8 @@ abstract class Service extends ContainerAware
     /**
      * Returns the repository
      *
-     * @param string $repository  Repository name
-     * @param string $name        The entity manager name (null for the default one)
+     * @param string $repository Repository name
+     * @param string $name       The entity manager name (null for the default one)
      *
      * @return \Doctrine\ORM\EntityRepository
      */
