@@ -8,6 +8,7 @@ namespace Gamma\Framework\Service;
 use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Stopwatch\Stopwatch;
 use Symfony\Component\Stopwatch\StopwatchEvent;
+use Gamma\Framework\Service\LoggerStopwatch;
 
 class LoggerStopwatchSlow extends LoggerStopwatch
 {
